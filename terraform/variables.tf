@@ -1,14 +1,15 @@
-variable "region" {
-  default = "us-east-1"
+variable "profile" {
+  type    = string
+  default = "dev"
 }
 
-variable "access_key" {}
-variable "secret_key" {}
-
 variable "ami_id" {
-  description = "AMI para EC2 (ex: ami-0c55b159cbfafe1f0 para us-east-1)"
+  description = "Simulação de AMI para EC2"
+  default     = "ami-local-simulation"
 }
 
 variable "bucket_name" {
-  description = "Nome do bucket S3"
+  description = "Simulação de nome de bucket S3"
+  default     = "bucket-local-simulation"
 }
+

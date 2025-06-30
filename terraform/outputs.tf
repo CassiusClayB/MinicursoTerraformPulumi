@@ -1,7 +1,7 @@
-output "ec2_id" {
-  value = aws_instance.example.id
+output "ec2_simulated_file" {
+  value = local_file.ec2_simulation.filename
 }
 
-output "s3_bucket" {
-  value = aws_s3_bucket.example.bucket
+output "s3_simulated_file" {
+  value = local_file.s3_simulation.filename
 }

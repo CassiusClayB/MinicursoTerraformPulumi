@@ -1,22 +1,51 @@
-provider "aws" {
-  region     = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
+locals {
+  config = {
+    dev = {
+      ec2_name    = "EC2-DEV"
+      s3_name     = "bucket-dev"
+    }
+    prod = {
+      ec2_name    = "EC2-PROD"
+      s3_name     = "bucket-prod"
+    }
+  }
+
+  selected = local.config[var.profile]
 }
 
-resource "aws_instance" "example" {
-  ami           = var.ami_id
-  instance_type = "t2.micro"
+provider "local" {}
 
-  tags = {
-    Name = "MinicursoEC2"
-  }
+resource "local_file" "ec2_simulation" {
+  content = <<EOF
+EC2 Simulado:
+- Nome: ${local.selected.ec2_name}
+- AMI: ${var.ami_id}
+- IP Privado: 192.168.0.10
+- Sistema Operacional: Ubuntu 22.04
+- Sub-rede: subnet-abc123
+- Status: running
+EOF
+
+  filename           = "${path.module}/simulated_output/ec2-${var.profile}.txt"
+  directory_permission = "0777"
+  file_permission      = "0777"
 }
 
-resource "aws_s3_bucket" "example" {
-  bucket = var.bucket_name
+resource "local_file" "s3_simulation" {
+  content = <<EOF
+Bucket Simulado:
+- Nome: ${local.selected.s3_name}
+- Bucket real: ${var.bucket_name}
+- Região: us-east-1
+- Versionamento: habilitado
+- Política: leitura pública
+- Arquivos:
+  - index.html
+  - style.css
+  - script.js
+EOF
 
-  tags = {
-    Name = "MinicursoS3"
-  }
+  filename           = "${path.module}/simulated_output/s3-${var.profile}.txt"
+  directory_permission = "0777"
+  file_permission      = "0777"
 }
