@@ -1,3 +1,0 @@
-name: iac-minicurso
-runtime: python
-description: Exemplo Pulumi com EC2 e S3
