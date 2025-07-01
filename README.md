@@ -1,6 +1,8 @@
 # 🏗️ Minicurso IaC – Terraform e Pulumi na Prática
 
-Este repositório contém exemplos práticos de **Infraestrutura como Código (IaC)** usando duas ferramentas amplamente utilizadas:
+Este repositório contém exemplos práticos de **Infraestrutura como Código (IaC)** usando duas ferramentas amplamente utilizadas: 
+
+- link da apresentação [Apresentação](https://docs.google.com/presentation/d/1SFCYiH5zLhferloK-h2FgZ6cBq0lM36fpBEx4RgtdRU/edit?usp=sharing)
 
 - [Terraform](https://www.terraform.io/)
 - [Pulumi](https://www.pulumi.com/) (com Python)
